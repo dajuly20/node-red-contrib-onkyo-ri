@@ -1,14 +1,15 @@
 module.exports = function (RED) {
 	function OnkyoRi(config) {
+		const { exec } = require("child_process");
 		RED.nodes.createNode(this, config);
 		var node = this;
 		node.on('input', function (msg) {
 			//RED.settings.sampleNodeColour
-			const { exec } = require("child_process");
+			console.log("TEST");
 			const payload = msg.payload; // TODO put field for that as well
 			const path = RED.settings.path;
 			console.log(payload);
-			exec("python3 ${path} main.py --gpio ${RED.settings.gpioPin} ${payload}", (error, stdout, stderr) => {
+			exec("python3 ${path}main.py --gpio ${RED.settings.gpioPin} ${payload}", (error, stdout, stderr) => {
 				if (error) {
 					console.log(`error: ${error.message}`);
 					return;
