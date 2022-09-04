@@ -9,6 +9,7 @@ module.exports = function (RED) {
 			const payload = msg.payload; // TODO put field for that as well
 			const path = RED.settings.path;
 			console.log(payload);
+			node.warn(payload);
 			exec(`python3 ${path}main.py --gpio ${RED.settings.gpioPin} ${payload}`, (error, stdout, stderr) => {
 				if (error) {
 					console.log(`error: ${error.message}`);
