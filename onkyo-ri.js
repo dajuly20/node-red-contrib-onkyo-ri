@@ -10,7 +10,7 @@ module.exports = function (RED) {
 				if (error) {
 					console.log(`error: ${error.message}`);
 					return;
-				}
+				} 
 				if (stderr) {
 					console.log(`stderr: ${stderr}`);
 					return;
@@ -18,7 +18,7 @@ module.exports = function (RED) {
 				console.log(`stdout: ${stdout}`);
 			});
 
-			msg.payload = msg.payload.toLowerCase();
+			
 			node.send(msg);
 		});
 	}
