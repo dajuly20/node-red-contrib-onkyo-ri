@@ -37,6 +37,14 @@ module.exports = function (RED) {
 			gpioPin: {
 				value: "25",
 				exportable: true
+			},
+			logging: {
+				// Console logging
+				console: {
+					level: "info",
+					metrics: false,
+					audit: false
+				}
 			}
 		}
 	});
