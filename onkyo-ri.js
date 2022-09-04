@@ -10,7 +10,8 @@ module.exports = function (RED) {
 			const path = RED.settings.path;
 			console.log(payload);
 			node.warn(payload);
-			exec(`python3 ${path}main.py --gpio ${RED.settings.gpioPin} ${payload}`, (error, stdout, stderr) => {
+			const command = `python3 ${path}main.py --gpio ${RED.settings.gpioPin} ${payload}`;
+			exec(command, (error, stdout, stderr) => {
 				if (error) {
 					console.log(`error: ${error.message}`);
 					return;
@@ -20,7 +21,7 @@ module.exports = function (RED) {
 					return;
 				}
 				console.log(`stdout: ${stdout}`);
-				node.send(msg);
+				node.send(command);
 			});
 
 			
