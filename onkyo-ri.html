@@ -1,0 +1,27 @@
+<script type="text/javascript">
+    RED.nodes.registerType('onkyo-ri',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            gpio_pin: {value:"25"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name || "onkyo-ri";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="onkyo-ri">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="lower-case">
+    <p>Node will send it's payload to over a Onkyo-RI cable. e.g. msg.payload could be 0x20 to switch a Onkyo TX SR 606 to CD Input 
+ TODO: Link readme for Codes </p>
+</script>
