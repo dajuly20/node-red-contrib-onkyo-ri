@@ -7,10 +7,10 @@ module.exports = function (RED) {
 			//RED.settings.sampleNodeColour
 			console.log("TEST");
 			const payload = msg.payload; // TODO put field for that as well
-			const path = RED.settings.path;
+			const path = config.path;
 			console.log(payload);
 			node.warn(payload);
-			const command = `python3 ${path}main.py --gpio ${RED.settings.gpioPin} ${payload}`;
+			const command = `python3 ${path}main.py --gpio ${config.gpioPin} ${payload}`;
 			exec(command, (error, stdout, stderr) => {
 				if (error) {
 					console.log(`error: ${error.message}`);
@@ -29,6 +29,7 @@ module.exports = function (RED) {
 		});
 	}
 	RED.nodes.registerType("onkyo-ri", OnkyoRi, {
+		
 		settings: {
 			path: {
 				value: "~/onkyo-rpi/onkyo-rpi/",
