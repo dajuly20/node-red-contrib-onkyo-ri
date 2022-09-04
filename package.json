@@ -1,0 +1,31 @@
+{
+  "name": "node-red-contrib-onkyo-ri",
+  "version": "1.0.0",
+  "description": "Wrapper for onkyo-rpi which is inspired on ahaack/onkyo-rpi and lets you control almost any Onkyo Ri capable device, that's connected through a custom build cable (2.5mm mono jack plug, terminated by 10k resistor, tip=data, shield=gnd) connected to the Rasperry Pi's GPIOS",
+  "main": "onkyo-ri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dajuly20/node-red-contrib-onkyo-ri.git"
+  },
+  "keywords": [
+    "onkyo",
+    "onkyo-ri",
+    "onkyo-rpi"
+  ],
+  "author": "Julian Wiche",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dajuly20/node-red-contrib-onkyo-ri/issues"
+  },
+  "homepage": "https://github.com/dajuly20/node-red-contrib-onkyo-ri#readme",
+  
+
+  "node-red" : {
+      "nodes": {
+          "onkyo-ri": "onkyo-ri.js"
+      }
+  }
+}
