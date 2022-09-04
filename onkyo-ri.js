@@ -19,10 +19,11 @@ module.exports = function (RED) {
 					return;
 				}
 				console.log(`stdout: ${stdout}`);
+				node.send(msg);
 			});
 
 			
-			node.send(msg);
+			
 		});
 	}
 	RED.nodes.registerType("onkyo-ri", OnkyoRi, {
