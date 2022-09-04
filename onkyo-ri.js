@@ -6,7 +6,8 @@ module.exports = function (RED) {
 			//RED.settings.sampleNodeColour
 			const { exec } = require("child_process");
 			const payload = msg.payload; // TODO put field for that as well
-			exec("python3 $(path) main.py --gpio $(RED.settings.gpioPin $(payload)", (error, stdout, stderr) => {
+			const path = RED.settings.path;
+			exec("python3 $(path) main.py --gpio $(RED.settings.gpioPin) $(payload)", (error, stdout, stderr) => {
 				if (error) {
 					console.log(`error: ${error.message}`);
 					return;
