@@ -18,13 +18,14 @@ Control Onkyo devices is possible among others through Remote Interactive port. 
 
 ## First steps
 ```
-sudo apt-get install python3-pip
+sudo apt-get install git python3 python3-pip python3-pigpio
 pip3 install -U pip setuptools 
-pip3 install pigpio
+pip3 install pigpio 
 ```
 Then execute setup with 
 
 ```
+git clone https://github.com/ahaack/onkyo-rpi
 sudo python3 setup.py build
 sudo python3 setup.py install
 sudo pigpiod
