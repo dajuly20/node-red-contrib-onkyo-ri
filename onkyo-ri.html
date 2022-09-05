@@ -26,7 +26,40 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="lower-case">
+
+<script type="text/html" data-help-name="onkyo-ri">
     <p>Node will send it's payload to over a Onkyo-RI cable. e.g. msg.payload could be 0x20 to switch a Onkyo TX SR 606 to CD Input 
- TODO: Link readme for Codes </p>
-</script>
+       
+        <h3>Inputs</h3>
+        <dl class="message-properties">
+            <dt>payload
+                <span class="property-type">string</span>
+            </dt>
+            <dd> The code that gets sent via Onkyo Ri </dd>
+            <dt class="optional">topic <span class="property-type">string</span></dt>
+            <dd> kkkk</dd>
+        </dl>
+    
+     <h3>Outputs</h3>
+         <ol class="node-ports">
+             <li>Standard output
+                 <dl class="message-properties">
+                     <dt>payload <span class="property-type">string</span></dt>
+                     <dd>the standard output of the command.</dd>
+                 </dl>
+             </li>
+             <li>Standard error
+                 <dl class="message-properties">
+                     <dt>payload <span class="property-type">string</span></dt>
+                     <dd>the standard error of the command.</dd>
+                 </dl>
+             </li>
+         </ol>
+    
+    <h3>Details</h3>
+        <p><code>msg.payload</code> blabla
+    <h3>References</h3>
+        <ul>
+            <li><a>Ri Codes</a> - to be used as Payload <code>msg.tweet</code> property</li>
+        </ul>
+ </script>
