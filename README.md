@@ -26,6 +26,7 @@ Then execute setup with
 
 ```
 git clone https://github.com/ahaack/onkyo-rpi
+cd onkyo-rpi
 sudo python3 setup.py build
 sudo python3 setup.py install
 sudo pigpiod
