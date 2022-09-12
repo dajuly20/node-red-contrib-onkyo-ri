@@ -1,0 +1,37 @@
+[
+    {
+      "Action": "Input Video3",
+      "Command": "0x10",
+      "Notes": "Switch input to Video3 channel"
+    },
+    {
+      "Action": "Vol Up",
+      "Command": "0x12",
+      "Notes": "Volume Up (only when input is set to Video 3)"
+    },
+    {
+      "Action": "Vol Down",
+      "Command": "0x13",
+      "Notes": "Volume Down (only when input is set to Video 3)"
+    },
+    {
+      "Action": "Mute",
+      "Command": "0x14",
+      "Notes": "Mute (only when input is set to Video 3)"
+    },
+    {
+      "Action": "Unmute",
+      "Command": "0x15",
+      "Notes": "Unmute (only when input is set to Video 3)"
+    },
+    {
+      "Action": "Power Off",
+      "Command": "0x01E",
+      "Notes": "Power OFF (only works if you are currently in Video 3!!)"
+    },
+    {
+      "Action": "Turn On + Input Video3",
+      "Command": "0x1",
+      "Notes": "Turn ON receiver and select Video3 as input channel"
+    }
+   ]

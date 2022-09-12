@@ -1,0 +1,47 @@
+[
+    {
+      "Action": "Input CD",
+      "Command": "0x20",
+      "Notes": "Switch input to CD channel"
+    },
+    {
+      "Action": "Turn On + CD",
+      "Command": "0x2",
+      "Notes": "Turn ON receiver and select CD as input channel"
+    },
+    {
+      "Action": "Input TAPE",
+      "Command": "0x70",
+      "Notes": "Switch input to TAPE channel"
+    },
+    {
+      "Action": "Turn On + TAPE",
+      "Command": "0x7",
+      "Notes": "Turn ON receiver and select TAPE as input channel"
+    },
+    {
+      "Action": "Input BD/DVD",
+      "Command": "0x120",
+      "Notes": "Switch input to BD/DVD channel"
+    },
+    {
+      "Action": "Turn On + BD/DVD",
+      "Command": "0x12",
+      "Notes": "Turn ON receiver and select BD/DVD as input channel"
+    },
+    {
+      "Action": "Input Video3",
+      "Command": "0x10",
+      "Notes": "Switch input to Video3 channel"
+    },
+    {
+      "Action": "Turn On + Input Video3",
+      "Command": "0x1",
+      "Notes": "Turn ON receiver and select Video3 as input channel"
+    },
+    {
+      "Action": "Power Off",
+      "Command": "0x01E",
+      "Notes": "Power OFF (only works if you are currently in Video 3!!)"
+    }
+   ]

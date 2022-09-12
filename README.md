@@ -1,29 +1,26 @@
-# node-red-contrib-onkyo-ri
-This wraps ahaack/onkyo-rpi for Node-Red
+# Objective 
+Control Onkyo Hardware with RI Jack with NodeRed & Rasperry Pi
+# TLDR
+U need to **bulild a cable** youslelf with a **3.5mm mono jack**, that has a **10kOhms resistor** in parallell, and connect the other end to a Rasperry Pi's GPIOS
 
-Wrapper for onkyo-rpi which is inspired on ahaack/onkyo-rpi and lets you control almost any Onkyo Ri capable device, that's connected through a custom build cable (2.5mm mono jack plug, terminated by 10k resistor, tip=data, shield=gnd) connected to the Rasperry Pi's GPIOS
-
-The node calls the python script and passes msg.payload to it.  So msg.payload could be  0x20 to switch a connected Onkyo Ri device to CD Input.
-
-
-# [Onkyo-RI Docs:](https://github.com/ahaack/onkyo-rpi)
-Control Onkyo devices is possible among others through Remote Interactive port. This port is normally used for direct communication between two Onkyo devices (ex. receiver and CD player). But why not turn on the receiver automatically when you start your own player?
+# Getting started
+**node-red-contrib-onkyo-ri** wrapps [ahaack/onkyo-rpi](https://github.com/ahaack/onkyo-rpi) (written in Python) for Node-Red on a Rasperry Pi
 
 
+The node calls the python script and passes msg.payload to it. So (according to the table below) msg.payload could be 0x20 to switch a connected Onkyo Ri device to CD Input.
 
-[![License](https://img.shields.io/github/license/docbender/Onkyo-RI)](https://github.com/docbender/Onkyo-RI)
-[![Stars](https://img.shields.io/github/stars/docbender/Onkyo-RI)](https://github.com/docbender/Onkyo-RI)
-[![Issues](https://img.shields.io/github/issues/docbender/Onkyo-RI)](https://github.com/docbender/Onkyo-RI/issues)
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/docbender/Onkyo-RI.svg)](http://isitmaintained.com/project/docbender/Onkyo-RI "Average time to resolve an issue")
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/docbender/Onkyo-RI.svg)](http://isitmaintained.com/project/docbender/Onkyo-RI "Percentage of issues still open")
 
-## First steps
+# Before you start
+
+Codes don'T seem to be super-similar between different models. There **are** codes documented, but if you don't have a model, that's in the list, you need to to execute the **scan** script, and determine the (missing) commands to your hardware yourself which could need some patience.
+
+# Installatio of the "Engine" 
 ```
 sudo apt-get install git python3 python3-pip python3-pigpio
 pip3 install -U pip setuptools 
 pip3 install pigpio 
 ```
-Then execute setup with 
+Then execute setup with (install git if it isn't)
 
 ```
 git clone https://github.com/ahaack/onkyo-rpi
@@ -36,36 +33,27 @@ sudo pigpiod
 To test if all works execute
 ```
 cd onkyo-rpi
-python3 main.py 
+python3 main.py 0x20      # AND / OR
+pathon3 scan.py 
 ``` 
 
+If the cabe is connected, and you got a right code, you should see / hear some reacrion from your Hardware ;) 
+
 ## Connection
-To connect to the RI port is used 3.5mm mono jack. Tip is for data signal and sleeve is ground (GND). Data are sent via TTL logic. So it is easy to connect RI device to 5V MCU (Arduino). Just connect data signal to some output pin and connect GND between each other. In case of stereo jack, connect tip to DATA, sleeve and ring to GND.  That means for a Rasperry Pi 3 to put the tip to Pin 22 (GPIO_GEN6) GPIO25 (tx) and the shield to Pin 20 or another ground  (Gnd)
+To connect to the RI port is used 3.5mm mono jack. Tip is for data signal and sleeve is ground (GND). In case of stereo jack, connect tip to DATA, sleeve **and** ring to GND. That means for a Rasperry Pi 3 to put the tip to Pin 22 (GPIO_GEN6) GPIO25 (tx) and the shield to Pin 20 or another ground (Gnd). Please note, the pins cant be connected to UART ( Pin 8 / 9 ). (I didn't try it, so correct me if im worng). If you need to use another GPIO, you can specify that later in node red (again didn't try that :D) The connection schema shown below is for a Rasperry Pi 3 - I guess rpi 4 is the same - again - correct me if I'm wrong ;) 
 
 
 
 ![Pi3 Pinout](docs/img/pi3pinout.svg)
 
 ![Onkyo Ri Cable](docs/img/cable.jpg)
+This is the cable I made. The part close to the pi contains my 10k resistor, which my past-me seemed to have soldered in correctly - yet it seemed to work. (In the picture it is connected to UART Pins - which is wrong as I guess. 8 =>  22 ( GPIO25 ) and ground could make its shorter path 6 => 20.
 
-## Protocol
-Protocol description could be found at:
-*    http://lirc.sourceforge.net/remotes/onkyo/Remote_Interactive
-
-or with grafical representation at:
-*    http://fredboboss.free.fr/articles/onkyo_ri.php .
-
-Protocol is pretty simple for implementation. In one message is transfered 12 bit code. This code represents action for target device. Most significant bit is send first.
-
-## Library
-There are two Onkyo-RI library:
-* blocking - send() method blocks other program execution until whole command is sent. It takes up to 61 ms.
-* non-blocking - send() method only start command sending. The execution is handled by processing() function. This function must be called periodically with maximum 1 ms period. Function return bool value about sending status (true - data is being sent, false - nothing to sent/sending is done). Before the command is completely sent other functions can be executed. Library use internaly Arduino micros() function, so no other timer is not blocked.
 
 ## RI codes
 At mentioned sites are also listed codes for Onkyo devices. Unfortunnately none of the codes is not valid for my receiver TX-8020. To determine the valid codes I wrote a simple loop for Arduino (more below) that goes through the whole 12bit code range (0x0-0xFFF). Results are listed below commands.
 
-### TX-SR605
+### TX-SR605 (my findings)
 <table>
   <tr><td><b>Action</b></td><td><b>Command</b></td><td><b>Notes</b></td></tr>
   <tr><td>Input CD</td><td>0x20</td><td>Switch input to CD channel</td></tr>
@@ -252,16 +240,47 @@ Thanks to jimtng
   <tr><td>OFF</td><td>0xEA</td><td>This code will switch the receiver into stanby mode, but it will not switch it back on.</td></tr>
 </table>
 
-#### Notes on volume
+
+
+## Further reading 
+
+## Protocol
+Protocol description could be found at:
+*    http://lirc.sourceforge.net/remotes/onkyo/Remote_Interactive
+
+or with grafical representation at:
+*    http://fredboboss.free.fr/articles/onkyo_ri.php .
+
+Protocol is pretty simple for implementation. In one message is transfered 12 bit code. This code represents action for target device. Most significant bit is send first.
+
+## Library
+There are two functions in the Onkyo-RI libary:
+* blocking - send() method blocks other program execution until whole command is sent. It takes up to 61 ms.
+* non-blocking - send() method only start command sending. The execution is handled by processing() function. This function must be called periodically with maximum 1 ms period. Function return bool value about sending status (true - data is being sent, false - nothing to sent/sending is done). Before the command is completely sent other functions can be executed. Library use internaly Arduino micros() function, so no other timer is not blocked.
+
+
+#### Notes on volume (as per [ahaack/onkyo-rpi](https://github.com/ahaack/onkyo-rpi))
 Volume control codes shown in the table are sent by the receiver out of its RI ports when adjusting the volume using a remote control (they can be found using an oscilloscope).
 However, the receiver will not react to these codes when they are sent from an external device, effectively making impossible to control its volume through RI signals.
 
-## Test program
-Program is located in repo folder Onkyo_test. It serves for check all codes (0x0 - 0xFFF) on target device in 500ms interval. For data line pin 10 is used as default. 
+**Comment to that by Julian Wiche**:
 
-Actual checked code is sent as ASCII through serial port and can be displayed in terminal. For serial port 9600b/s is set.  Using terminal test program can be stopped, reset or user defined code could be used. 
+ That doesn't seem to be true on every device. I **could** contol the volume on my TX SR 606! The test program "test.py" can be used to obtain the codes - it only requires a "bit" of parience :D I think that receivers, that have a motor to turn the know, could go into this problem. 
+
+## Test program
+If none of the abouve codes works for you. You can walk through any possible code with the test program. It is located in the folder that we're cloning aboce. It serves for check all codes (0x0 - 0xFFF) on target device in 500ms interval. You can run it on a cli (e.g. bash) by ```python3 scan.py --help``` which will tell you how to use it. If you run it without any parameters it just goes through any command.. You just have to make sure it uses the wright GPIO. 
+
+NOTE: As per my personal experience: For me testing went thought a testing mode, that made a lond sinus tone.. also it could increase the volume before.. so be careful not to wake anyone when you try it at nights :D 
+
+```python3 scan.py```
 
 Terminal commands:
 * p - pause/run command sending
 * r - reset loop (program start from 0)
 * hexadecimal number - number in hexadecimal format represents code that user want to test on target device. From this code automatical procedure will continue.
+
+## Feel free to Contribute 
+If it's just Ri Codes for your Hardware (by wrting me) or if you fork the whole thing and make it your own project. Open Source means not to be selfish - share your findings! Before you fork though, you can send me a a message - I 've seen it often enough to have the same project in 100 different forks / versions on npm / Node Red. Think of DAUs. They won't know which version to install.  
+
+
+

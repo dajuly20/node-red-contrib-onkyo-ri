@@ -1,0 +1,87 @@
+[
+    {
+      "Action": "Input TV/CD",
+      "Command": "0x20",
+      "Notes": "Switch input to TV/CD channel"
+    },
+    {
+      "Action": "Input BD/DVD",
+      "Command": "0x120",
+      "Notes": "Switch input to BD/DVD channel"
+    },
+    {
+      "Action": "Dim",
+      "Command": "0x2B0",
+      "Notes": "Set dimmer brightness to highest level"
+    },
+    {
+      "Action": "Dimer",
+      "Command": "0x2B1",
+      "Notes": "Set dimmer brightness to mid level"
+    },
+    {
+      "Action": "Dimmest",
+      "Command": "0x2B2",
+      "Notes": "Set dimmer brightness to lowest level"
+    },
+    {
+      "Action": "Test mode set",
+      "Command": "0x421 - 0x424",
+      "Notes": "Test 1-00,2-00,3-00,4-00"
+    },
+    {
+      "Action": "Test",
+      "Command": "0x425",
+      "Notes": "Test x-01"
+    },
+    {
+      "Action": "Test",
+      "Command": "0x426",
+      "Notes": "Test x-02"
+    },
+    {
+      "Action": "Test",
+      "Command": "0x427",
+      "Notes": "WiFi test"
+    },
+    {
+      "Action": "Test",
+      "Command": "0x428",
+      "Notes": "Route test"
+    },
+    {
+      "Action": "Test",
+      "Command": "0x42a",
+      "Notes": "Key Test Mode"
+    },
+    {
+      "Action": "Test",
+      "Command": "0x42b",
+      "Notes": "Test x-07"
+    },
+    {
+      "Action": "Test",
+      "Command": "0x42c",
+      "Notes": "Test x-08"
+    },
+    {
+      "Action": "Test",
+      "Command": "0x42d",
+      "Notes": "Test x-09"
+    },
+    {
+      "Action": "Test",
+      "Command": "0x42e",
+      "Notes": "Test x-00"
+    },
+    {
+      "Action": "Test mode set",
+      "Command": "0x43e",
+      "Notes": "Test 5-00"
+    },
+    {
+      "Action": "Test",
+      "Command": "0x43f",
+      "Notes": "CEC test"
+    }
+   ]

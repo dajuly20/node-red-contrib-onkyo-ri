@@ -1,0 +1,122 @@
+[
+    {
+      "Action": "Input CD",
+      "Command": "0x20",
+      "Notes": "Switch input to CD channel"
+    },
+    {
+      "Action": "Turn On + CD",
+      "Command": "0x2F",
+      "Notes": "Turn ON receiver and select CD as input channel"
+    },
+    {
+      "Action": "Input TAPE",
+      "Command": "0x70",
+      "Notes": "Switch input to TAPE channel"
+    },
+    {
+      "Action": "Turn On + TAPE",
+      "Command": "0x7F",
+      "Notes": "Turn ON receiver and select TAPE as input channel"
+    },
+    {
+      "Action": "Input DVD",
+      "Command": "0x120",
+      "Notes": "Switch input to DVD channel"
+    },
+    {
+      "Action": "Turn On + DVD",
+      "Command": "0x12F",
+      "Notes": "Turn ON receiver and select DVD as input channel"
+    },
+    {
+      "Action": "Input DOCK",
+      "Command": "0x170",
+      "Notes": "Switch input to DOCK channel"
+    },
+    {
+      "Action": "Turn On + DOCK",
+      "Command": "0x17F",
+      "Notes": "Turn ON receiver and select DOCK as input channel"
+    },
+    {
+      "Action": "Dimmer Hi",
+      "Command": "0x2B0",
+      "Notes": "Set dimmer brightness to highest level"
+    },
+    {
+      "Action": "Dimmer Mid",
+      "Command": "0x2B1",
+      "Notes": "Set dimmer brightness to mid level"
+    },
+    {
+      "Action": "Dimmer Lo",
+      "Command": "0x2B2",
+      "Notes": "Set dimmer brightness to lowest level"
+    },
+    {
+      "Action": "Dimmer Hi",
+      "Command": "0x2B8",
+      "Notes": "Set dimmer brightness to highest level"
+    },
+    {
+      "Action": "Dimmer Lo",
+      "Command": "0x2BF",
+      "Notes": "Set dimmer brightness to lowest level"
+    },
+    {
+      "Action": "Turn Off",
+      "Command": "0x1AE",
+      "Notes": "Turn OFF(set into standby) receiver"
+    },
+    {
+      "Action": "Test mode",
+      "Command": "0x421 - 0x424",
+      "Notes": "Some kind of test modes. Leave test mode is possible by code 0x420 (Turn Off). Test modes provides clear of receiver setting."
+    },
+    {
+      "Action": "Switch to Radio",
+      "Command": "0x423",
+      "Notes": "Switch to FB"
+    },
+    {
+      "Action": "Radio search next",
+      "Command": "0x430",
+      "Notes": "Tune next radio station when radio is selected."
+    },
+    {
+      "Action": "Radio search previous",
+      "Command": "0x431",
+      "Notes": "Tune previous radio station when radio is selected."
+    },
+    {
+      "Action": "Radio Stereo/Mono",
+      "Command": "0x432",
+      "Notes": "Switch between Stereo and Mono when FM radio is selected."
+    },
+    {
+      "Action": "Radio station next",
+      "Command": "0x433",
+      "Notes": "Jump to next stored radio station when radio is selected."
+    },
+    {
+      "Action": "Radio station previous",
+      "Command": "0x434",
+      "Notes": "Jump to previous stored radio station when radio is selected."
+    },
+    {
+      "Action": "Vol Up",
+      "Command": "0x1A2",
+      "Notes": "Volume Up (only when input is set to Video 3)"
+    },
+    {
+      "Action": "Vol Down",
+      "Command": "0x1A3",
+      "Notes": "Volume Down (only when input is set to Video 3)"
+    },
+    {
+      "Action": "Mute",
+      "Command": "0x1A4",
+      "Notes": "Mute (only when input is set to Video 3)"
+    }
+   ]

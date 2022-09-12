@@ -13,10 +13,12 @@ module.exports = function (RED) {
 			const command = `python3 ${path}main.py --gpio ${config.gpioPin} ${payload}`;
 			exec(command, (error, stdout, stderr) => {
 				if (error) {
+					node.status({fill:"red",shape:"square",text: error.message});
 					console.log(`error: ${error.message}`);
 					return;
 				} 
 				if (stderr) {
+					node.status({fill:"red",shape:"ring",text:stderr});
 					console.log(`stderr: ${stderr}`);
 					return;
 				}
