@@ -10,7 +10,7 @@ module.exports = function (RED) {
 			const path = config.path;
 			console.log("hhhhhhhhh"+payload);
 			const nodeRedDir = RED.settings.userDir || process.env.NODE_RED_HOME || path.resolve(".");
-			console.log
+			console.log("NodeRedDir: ",nodeRedDir);
 			node.warn("hhhhhhhhh"+payload);//${config.gpioPin}
 			const command = `pwd`
 			//var path = require('path');
