@@ -4,7 +4,8 @@
   "description": "Wrapper for onkyo-rpi which is inspired on ahaack/onkyo-rpi and lets you control almost any Onkyo Ri capable device, that's connected through a custom build cable (2.5mm mono jack plug, terminated by 10k resistor, tip=data, shield=gnd) connected to the Rasperry Pi's GPIOS",
   "main": "onkyo-ri.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "if cd node_modules/Onkyo-RI-Rasperrypi; then git pull; else git clone https://github.com/dajuly20/Onkyo-RI-Rasperrypi node_modules/Onkyo-RI-Rasperrypi;fi && echo `whoami` && ./node_modules/Onkyo-RI-Rasperrypi/build"
   },
   "repository": {
     "type": "git",
@@ -21,11 +22,10 @@
     "url": "https://github.com/dajuly20/node-red-contrib-onkyo-ri/issues"
   },
   "homepage": "https://github.com/dajuly20/node-red-contrib-onkyo-ri#readme",
-  
-
-  "node-red" : {
-      "nodes": {
-          "onkyo-ri": "onkyo-ri.js"
-      }
+  "node-red": {
+    "nodes": {
+      "onkyo-ri": "onkyo-ri.js"
+    }
   }
+  
 }

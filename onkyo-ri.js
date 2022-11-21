@@ -8,20 +8,27 @@ module.exports = function (RED) {
 			console.log("TEST");
 			const payload = msg.payload; // TODO put field for that as well
 			const path = config.path;
-			console.log(payload);
-			node.warn(payload);
-			const command = `python3 ${path}main.py --gpio ${config.gpioPin} ${payload}`;
+			console.log("hhhhhhhhh"+payload);
+			node.warn("hhhhhhhhh"+payload);//${config.gpioPin}
+			const command = `pwd`
+			//var path = require('path');
+			//userdir = path.resolve(process.execPath,'..');
+			//node.warn(userdir);
+			// && ../node_modules/Onkyo-RI-Rasperrypi/onkyoricli -p 24 -c ${payload}`;
+			node.warn("HERE WE R"+command)
 			exec(command, (error, stdout, stderr) => {
 				if (error) {
-					console.log(`error: ${error.message}`);
+					node.warn(`error: ${error.message}`);
 					return;
 				} 
 				if (stderr) {
-					console.log(`stderr: ${stderr}`);
+					node.warn(`stderr: ${stderr}`);
 					return;
 				}
-				console.log(`stdout: ${stdout}`);
-				node.send(command);
+			
+				node.warn(`stdout: ${stdout}`);
+
+				node.send(command+" ...aha:"+stdout);
 			});
 
 			
