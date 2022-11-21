@@ -9,6 +9,8 @@ module.exports = function (RED) {
 			const payload = msg.payload; // TODO put field for that as well
 			const path = config.path;
 			console.log("hhhhhhhhh"+payload);
+			const nodeRedDir = RED.settings.userDir || process.env.NODE_RED_HOME || path.resolve(".");
+			console.log
 			node.warn("hhhhhhhhh"+payload);//${config.gpioPin}
 			const command = `pwd`
 			//var path = require('path');
@@ -23,6 +25,7 @@ module.exports = function (RED) {
 				} 
 				if (stderr) {
 					node.warn(`stderr: ${stderr}`);
+
 					return;
 				}
 			
