@@ -8,6 +8,7 @@ module.exports = function (RED) {
 			console.log("TEST");
 			const payload = msg.payload; // TODO put field for that as well
 			const path = config.path;
+			const nodeRedDir = RED.settings.userDir || process.env.NODE_RED_HOME || path.resolve(".");
 			console.log(payload);
 			node.warn(payload);
 			const command = `python3 ${path}main.py --gpio ${config.gpioPin} ${payload}`;
