@@ -7,8 +7,7 @@ module.exports = function (RED) {
 			//RED.settings.sampleNodeColour
 			
 			const payload = msg.payload; // TODO put field for that as well
-			const path = config.path;
-			
+			const path = config.path;			
 			const nodeRedDir = RED.settings.userDir || process.env.NODE_RED_HOME || path.resolve(".");
 			const completePath = `${nodeRedDir}/node_modules/node-red-contrib-onkyo-ri/Onkyo-RI-Rasperrypi/onkyoricli -p 24 -c ${payload}`;
 			console.log
