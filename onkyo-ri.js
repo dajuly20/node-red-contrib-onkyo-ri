@@ -5,20 +5,23 @@ module.exports = function (RED) {
 		var node = this;
 		node.on('input', function (msg) {
 			//RED.settings.sampleNodeColour
-			console.log("TEST");
+			
 			const payload = msg.payload; // TODO put field for that as well
 			const path = config.path;
-			console.log("hhhhhhhhh"+payload);
+			
 			const nodeRedDir = RED.settings.userDir || process.env.NODE_RED_HOME || path.resolve(".");
+			const completePath = `${nodeRedDir}/node_modules/node-red-contrib-onkyo-ri/Onkyo-RI-Rasperrypi/onkyoricli -p 24 -c ${payload}`;
 			console.log
-			node.warn("hhhhhhhhh"+payload);//${config.gpioPin}
+			
+			node.warn("Dir: "+nodeRedDir);//${config.gpioPin}
+			node.warn("Complete: "+completePath);
 			const command = `pwd`
 			//var path = require('path');
 			//userdir = path.resolve(process.execPath,'..');
 			//node.warn(userdir);
 			// && ../node_modules/Onkyo-RI-Rasperrypi/onkyoricli -p 24 -c ${payload}`;
 			node.warn("HERE WE R"+command)
-			exec(command, (error, stdout, stderr) => {
+			exec(completePath, (error, stdout, stderr) => {
 				if (error) {
 					node.warn(`error: ${error.message}`);
 					return;
