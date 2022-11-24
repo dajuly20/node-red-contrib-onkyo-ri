@@ -33,41 +33,27 @@
 
 
 <script type="text/html" data-help-name="onkyo-ri">
-    <h1><a href="https://github.com/"ahaack/onkyo-rpi">ahaack/onkyo-rpi</a> is required for this node to work!</h1>
-        <h3>Installation instructions availible on <a href="https://github.com/dajuly20/node-red-contrib-onkyo-ri">dajuly20/node-red-contrib-onkyo-ri</a> or on the original project's git.</h3>
+    <h1><a href="https://github.com/dajuly20/Onkyo-RI-Rasperrypi">dajuly20/Onkyo-RI-Rasperrypi</a> (based on ahais installed during installation</h1>
+        <h3>See this projects git as well  <a href="https://github.com/dajuly20/node-red-contrib-onkyo-ri">dajuly20/node-red-contrib-onkyo-ri</a> </h3>
     
     <p>Node will send it's payload over a Onkyo-RI cable. e.g. msg.payload could be 0x20 to switch a Onkyo TX SR 606 to CD Input. (See <a href="https://github.com/dajuly20/node-red-contrib-onkyo-ri">Projekts GitHub dajuly20/node-red-contrib-onkyo-ri</a> / how to find them for your Hardware)
        
-        <h3>Inputs</h3>
+        <h3>Outputs</h3>
         <dl class="message-properties">
             <dt>payload
                 <span class="property-type">string</span>
             </dt>
-            <dd> The code that gets sent via Onkyo Ri </dd>
+            <dd> The code that gets sent via Onkyo Ri, e.g.<code>0x20</code> but also multiple comma seperated values like <code>0x20,0x2F,0x20</code> </dd>
             <dt class="optional">topic <span class="property-type">string</span></dt>
-            <dd> kkkk</dd>
+            <dd> Overrides the GPIO Pin to send to. <br />Numeric<br />e.g. 24<br /> Like defined in WiringPi </dd>
         </dl>
     
-     <h3>Outputs</h3>
-         <ol class="node-ports">
-             <li>Standard output
-                 <dl class="message-properties">
-                     <dt>payload <span class="property-type">string</span></dt>
-                     <dd>the standard output of the command.</dd>
-                 </dl>
-             </li>
-             <li>Standard error
-                 <dl class="message-properties">
-                     <dt>payload <span class="property-type">string</span></dt>
-                     <dd>the standard error of the command.</dd>
-                 </dl>
-             </li>
-         </ol>
     
     <h3>Details</h3>
         <p><code>msg.payload</code> blabla
     <h3>References</h3>
         <ul>
             <li><a>Ri Codes</a> - to be used as Payload <code>msg.tweet</code> property</li>
+	    <li><a href="http://wiringpi.com">WiringPi</a> for Pin Numbers to use</li>
         </ul>
  </script>

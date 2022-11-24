@@ -6,10 +6,10 @@ module.exports = function (RED) {
 		node.on('input', function (msg) {
 			//RED.settings.sampleNodeColour
 			
-			const payload = msg.payload; // TODO put field for that as well
+			const payload = msg.payload;
 			const path = config.path;			
 			const nodeRedDir = RED.settings.userDir || process.env.NODE_RED_HOME || path.resolve(".");
-			const completePath = `${nodeRedDir}/node_modules/node-red-contrib-onkyo-ri/Onkyo-RI-Rasperrypi/onkyoricli -p 24 -c ${payload}`;
+			const completePath = `${nodeRedDir}/node_modules/node-red-contrib-onkyo-ri/Onkyo-RI-Rasperrypi/onkyoricli -p ${config.gpio} -c ${payload}`;
 			console.log
 			
 			node.warn("Dir: "+nodeRedDir);
