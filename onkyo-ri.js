@@ -12,7 +12,8 @@ module.exports = function (RED) {
 			const completePath = `${nodeRedDir}/node_modules/node-red-contrib-onkyo-ri/Onkyo-RI-Rasperrypi/onkyoricli -p 24 -c ${payload}`;
 			console.log
 			
-			node.warn("Dir: "+nodeRedDir);//${config.gpioPin}
+			node.warn("Dir: "+nodeRedDir);
+			node.warn(`Selected GPIO Pin: ${config.gpio}`);
 			node.warn("Complete: "+completePath);
 			const command = `pwd`
 			//var path = require('path');

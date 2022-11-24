@@ -3,8 +3,7 @@
         category: 'function',
         color: '#a6bbcf',
         defaults: {
-            gpio_pin: {value:"25"},
-            path: {value:"~/onkyo-rpi/onkyo-rpi/"}
+            gpio: {value:"6"},
         },
         inputs:1,
         outputs:1,
@@ -13,6 +12,12 @@
             return this.name || "onkyo-ri";
         }
     });
+
+
+/*$("#node-config-input-gpio").typedInput({
+    type:"num",
+    types:["num"]
+})*/
 </script>
 
 <script type="text/html" data-template-name="onkyo-ri">
@@ -21,8 +26,8 @@
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-config-input-path"><i class="fa fa-bookmark"></i> Path</label>
-        <input type="text" id="node-config-input-path">
+        <label for="node-input-gpio"><i class="fa fa-bookmark"></i> GPIO (WiringPi)</label>
+        <input type="text" id="node-input-gpio">
     </div>
 </script>
 
