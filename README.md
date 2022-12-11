@@ -25,13 +25,16 @@ To test if all works execute
 ```
 cd Onkyo-RI-Rasperrypi
 ./onkyoricli -p <wiringPi port> -c 0x20
-The port number 
+```
+The graphic below shows the port numbers for a rasperry pi 4. 
+If you connected the cable as suggested below use ```25```
+If you have another model then look for WiringPi pin numbers rasperry pi xxx. 
 
 
 If the cabe is connected, and you got a right code, you should see / hear some reacrion from your Hardware ;) 
 
 ## Connection
-To connect to the RI port is used 3.5mm mono jack. Tip is for data signal and sleeve is ground (GND). In case of stereo jack, connect tip to DATA, sleeve **and** ring to GND. That means for a Rasperry Pi 3 to put the tip to Pin 22 (GPIO_GEN6) GPIO25 (tx) and the shield to Pin 20 or another ground (Gnd). Please note, the pins cant be connected to UART ( Pin 8 / 9 ). (I didn't try it, so correct me if im worng). If you need to use another GPIO, you can specify that later in node red (again didn't try that :D) The connection schema shown below is for a Rasperry Pi 3 - I guess rpi 4 is the same - again - correct me if I'm wrong ;) 
+To connect to the RI port a 3.5mm mono jack is used. Tip is for data signal and sleeve is ground (GND). In case of stereo jack, connect tip to DATA, sleeve **and** ring to GND. That means for a Rasperry Pi 3 to put the tip to Pin 22 (GPIO_GEN6) GPIO25 (tx) and the shield to Pin 20 or another ground (Gnd). Please note, the pins cant be connected to UART ( Pin 8 / 9 ). (I didn't try it, so correct me if im worng). If you need to use another GPIO, you can specify that later in node red (again didn't try that :D) The connection schema shown below is for a Rasperry Pi 3 - I guess rpi 4 is the same - again - correct me if I'm wrong ;) 
 
 
 
