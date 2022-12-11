@@ -8,7 +8,7 @@ U need to **bulild a cable** youslelf with a **3.5mm mono jack**, that has a **1
 (written in C++ using Wiring Pi) for Node-Red on a Rasperry Pi
 
 The node calls the script and passes ```msg.payload``` to it. So (according to the table below) ```msg.payload``` could be 0x20 to switch a connected Onkyo Ri device to CD Input.
-You can also send multiple commands, seperated by commas like ```0x20,0x20,0x20```.
+You can also send multiple commands, seperated by commas like ```0x20,0x20,0x20```. 
 
 # Before you start
 Codes don't seem to be super-similar between different models. There **are** codes documented, but if you don't have a model, that's in the list, you need to use a scan script like in [ahaack/onkyo-RPI](https://github.com/ahaack/onkyo-RPI) ***scan** script, and determine the (missing) commands to your hardware yourself 
@@ -32,7 +32,7 @@ If you connected the cable as suggested below use ```25```
 If you have another model then look for WiringPi pin numbers rasperry pi xxx. 
 
 
-If the cabe is connected, and you got a right code, you should see / hear some reacrion from your Hardware ;) 
+If the cabe is connected, and you got a right code, you should see / hear some reacrion from your Hardware now! 
 
 ## Connection
 To connect to the RI port a 3.5mm mono jack is used. Tip is for data signal and sleeve is ground (GND). In case of stereo jack, connect tip to DATA, sleeve **and** ring to GND. That means for a Rasperry Pi 3 to put the tip to Pin 22 (GPIO_GEN6) GPIO25 (tx) (which is set as Standart for this node) and the shield to Pin 20 or another ground (Gnd). Please note, the pins can't be connected to UART ( Pin 8 / 9 ). (I didn't try it, so correct me if im worng).
