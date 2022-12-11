@@ -12,7 +12,8 @@ The node calls the script and passes msg.payload to it. So (according to the tab
 
 # Before you start
 
-Codes don'T seem to be super-similar between different models. There **are** codes documented, but if you don't have a model, that's in the list, you need to to execute the **scan** script, and determine the (missing) commands to your hardware yourself which could need some patience.
+Codes don't seem to be super-similar between different models. There **are** codes documented, but if you don't have a model, that's in the list, you need to use a scan script like in [ahaack/onkyo-RPI](https://github.com/ahaack/onkyo-RPI) ***scan** script, and determine the (missing) commands to your hardware yourself which could need some patience. Please consider adding your device to the list here then. Pull request welcome! 
+Creating a C++ implementation and adding a NodeRed wrapper for it is planned. 
 
 # Installation
 The dependency comes pre compiled and should just run fine. 
