@@ -4,20 +4,22 @@ Control Onkyo Hardware with RI Jack with NodeRed & Rasperry Pi
 U need to **bulild a cable** youslelf with a **3.5mm mono jack**, that has a **10kOhms resistor** in parallell, and connect the other end to a Rasperry Pi's GPIOS
 
 # Getting started
-**node-red-contrib-onkyo-ri** wrapps [dajuly0x23/onkyo-rpi](https://github.com/dajuly20/Onkyo-RI-Rasperrypi) (written in C++ using Wiring Pi) for Node-Red on a Rasperry Pi
+**node-red-contrib-onkyo-ri** wrapps [dajuly0x23/onkyo-rpi](https://github.com/dajuly20/Onkyo-RI-Rasperrypi) 
+(written in C++ using Wiring Pi) for Node-Red on a Rasperry Pi
 
 The node calls the script and passes ```msg.payload``` to it. So (according to the table below) ```msg.payload``` could be 0x20 to switch a connected Onkyo Ri device to CD Input.
 You can also send multiple commands, seperated by commas like ```0x20,0x20,0x20```.
 
 # Before you start
-Codes don't seem to be super-similar between different models. There **are** codes documented, but if you don't have a model, that's in the list, you need to use a scan script like in [ahaack/onkyo-RPI](https://github.com/ahaack/onkyo-RPI) ***scan** script, and determine the (missing) commands to your hardware yourself which could need some patience. Please consider adding your device to the list here then. Pull request welcome! 
-Creating a C++ implementation and adding a NodeRed wrapper for it is planned. 
+Codes don't seem to be super-similar between different models. There **are** codes documented, but if you don't have a model, that's in the list, you need to use a scan script like in [ahaack/onkyo-RPI](https://github.com/ahaack/onkyo-RPI) ***scan** script, and determine the (missing) commands to your hardware yourself 
+Please consider adding your device to the list here then. Pull request welcome! 
+Creating a C++ implementation and adding a NodeRed wrapper for it is planned for the near future. 
 
 # Installation
 The dependency comes pre compiled and should just run fine out of the box. 
 Test by executing. ```./Onkyo-RI-Rasperrypi/onkyoricli```
 
-If it fails, maybe you have to recompile it. See docs for onkyo ri raspberrypi for instructions. 
+If it fails, maybe you have to recompile it. See docs for [dajuly0x23/onkyo-rpi](https://github.com/dajuly20/Onkyo-RI-Rasperrypi) for instructions. 
 
 
 To test if all works execute
@@ -259,9 +261,10 @@ The scan program (see further up) can be used to obtain the codes - it only requ
 
 ## Test program
 If none of the abouve codes works for you. You can walk through any possible code with the test program. (see above) 
-It serves for check all codes (0x0 - 0xFFF) on the target device in a 500ms interval. 
+It serves for check all codes (0x000 - 0xFFF) on the target device in a 500ms interval. 
 
-NOTE: As per my personal experience: For me testing went thought a testing mode, that made a lond sinus tone.. also it could increase the volume before.. so be careful not to wake anyone when you try it at nights :D 
+NOTE: As per my personal experience: For me testing went thought a testing mode, that made a loud sinus tone.. also it could increase the volume before.. so be careful not to wake anyone when you try this at nights :D 
 
 ## Feel free to Contribute 
-If it's just Ri Codes for your Hardware (by wrting me) or sending a merge request or if you fork the whole thing and make it your own project. Please share your findings! Before you fork though, you can send me a a message - I 've seen it often enough to have the same project in 100 different forks / versions on npm / Node Red. Think of DAUs. They won't know which version to install.  
+If it's just Ri Codes for your Hardware by sending a merge request or write me an email. 
+if you fork the whole thing and make it your own project. Please share your findings! Before you fork though, you can send me a message - I 've seen it often enough to have the same project in 100 different forks / versions on npm / Node Red. Think of DAUs. They won't know which version to install.  
