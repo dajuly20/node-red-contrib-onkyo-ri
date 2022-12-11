@@ -47,7 +47,7 @@ This is the cable I made. The part close to the pi contains my 10k resistor, whi
 
 
 ## RI codes.
-### [RI Codes on seperate page](./RiCodes.md)
+### [RI Codes on seperate page](./Codes/RiCodes.md)
 ##
 
 ## Further reading 
