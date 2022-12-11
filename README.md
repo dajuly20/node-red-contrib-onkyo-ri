@@ -6,8 +6,8 @@ U need to **bulild a cable** youslelf with a **3.5mm mono jack**, that has a **1
 # Getting started
 **node-red-contrib-onkyo-ri** wrapps [dajuly0x23/onkyo-rpi](https://github.com/dajuly20/Onkyo-RI-Rasperrypi) (written in C++ using Wiring Pi) for Node-Red on a Rasperry Pi
 
-The node calls the script and passes msg.payload to it. So (according to the table below) msg.payload could be 0x20 to switch a connected Onkyo Ri device to CD Input.
-
+The node calls the script and passes ```msg.payload``` to it. So (according to the table below) ```msg.payload``` could be 0x20 to switch a connected Onkyo Ri device to CD Input.
+You can also send multiple commands, seperated by commas like ```0x20,0x20,0x20```.
 
 # Before you start
 Codes don't seem to be super-similar between different models. There **are** codes documented, but if you don't have a model, that's in the list, you need to use a scan script like in [ahaack/onkyo-RPI](https://github.com/ahaack/onkyo-RPI) ***scan** script, and determine the (missing) commands to your hardware yourself which could need some patience. Please consider adding your device to the list here then. Pull request welcome! 
