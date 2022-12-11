@@ -11,7 +11,8 @@ The node calls the script and passes ```msg.payload``` to it. So (according to t
 You can also send multiple commands, seperated by commas like ```0x20,0x20,0x20```. 
 
 # Before you start
-Codes don't seem to be super-similar between different models. There **are** codes documented, but if you don't have a model, that's in the list, you need to use a scan script like in [ahaack/onkyo-RPI](https://github.com/ahaack/onkyo-RPI) ***scan** script, and determine the (missing) commands to your hardware yourself 
+Codes don't seem to be super-similar between different models. There **are** codes documented, but if you don't have a model, that's in the list, 
+you need to use a scan script like in [ahaack/onkyo-RPI](https://github.com/ahaack/onkyo-RPI) ***scan** script, and determine the (missing) commands to your hardware yourself 
 Please consider adding your device to the list here then. Pull request welcome! 
 Creating a C++ implementation and adding a NodeRed wrapper for it is planned for the near future. 
 
@@ -260,7 +261,7 @@ That doesn't seem to be true on every device. I **could** contol the volume on m
 The scan program (see further up) can be used to obtain the codes - it only requires a "bit" of parience. I think that receivers, that have a motor to turn the knob won't work. 
 
 ## Test program
-If none of the abouve codes works for you. You can walk through any possible code with the test program. (see above) 
+If none of the abouve codes works for you. You can walk through any possible code with the test program. See: [ahaack/onkyo-RPI](https://github.com/ahaack/onkyo-RPI) 
 It serves for check all codes (0x000 - 0xFFF) on the target device in a 500ms interval. 
 
 NOTE: As per my personal experience: For me testing went thought a testing mode, that made a loud sinus tone.. also it could increase the volume before.. so be careful not to wake anyone when you try this at nights :D 
