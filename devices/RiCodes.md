@@ -1,4 +1,8 @@
-  <tr><td>Turn On + CD</td><td>0x2F</td><td>Turn ON receiver and select CD as input channel</td></tr>
+ ### TX-SR605
+<table>
+  <tr><td><b>Action</b></td><td><b>Command</b></td><td><b>Notes</b></td></tr>
+  <tr><td>Input CD</td><td>0x20</td><td>Switch input to CD channel</td></tr>
+ <tr><td>Turn On + CD</td><td>0x2F</td><td>Turn ON receiver and select CD as input channel</td></tr>
   <tr><td>Input TAPE</td><td>0x70</td><td>Switch input to TAPE channel</td></tr>
   <tr><td>Turn On + TAPE</td><td>0x7F</td><td>Turn ON receiver and select TAPE as input channel</td></tr>  
   <tr><td>Input DVD</td><td>0x120</td><td>Switch input to DVD channel</td></tr>
