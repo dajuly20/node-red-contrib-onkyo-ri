@@ -4,22 +4,20 @@ Control Onkyo Hardware with RI Jack with NodeRed & Rasperry Pi
 U need to **bulild a cable** youslelf with a **3.5mm mono jack**, that has a **10kOhms resistor** in parallell, and connect the other end to a Rasperry Pi's GPIOS
 
 # Getting started
-**node-red-contrib-onkyo-ri** wrapps [ahaack/onkyo-rpi](https://github.com/ahaack/onkyo-rpi) (written in Python) for Node-Red on a Rasperry Pi
+**node-red-contrib-onkyo-ri** wrapps [dajuly0x23/onkyo-rpi](https://github.com/dajuly20/Onkyo-RI-Rasperrypi) (written in C++ using Wiring Pi) for Node-Red on a Rasperry Pi
 
 
-The node calls the python script and passes msg.payload to it. So (according to the table below) msg.payload could be 0x20 to switch a connected Onkyo Ri device to CD Input.
+The node calls the script and passes msg.payload to it. So (according to the table below) msg.payload could be 0x20 to switch a connected Onkyo Ri device to CD Input.
 
 
 # Before you start
 
 Codes don'T seem to be super-similar between different models. There **are** codes documented, but if you don't have a model, that's in the list, you need to to execute the **scan** script, and determine the (missing) commands to your hardware yourself which could need some patience.
 
-# Installatio of the "Engine" 
-```
-sudo apt-get install git python3 python3-pip python3-pigpio
-pip3 install -U pip setuptools 
-pip3 install pigpio 
-```
+# Installation
+The dependency comes pre compiled and should just run fine. 
+Test by executing. ./
+
 Then execute setup with (install git if it isn't)
 
 ```
