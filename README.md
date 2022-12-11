@@ -16,24 +16,17 @@ Codes don'T seem to be super-similar between different models. There **are** cod
 
 # Installation
 The dependency comes pre compiled and should just run fine. 
-Test by executing. ./
+Test by executing. '''./Onkyo-RI-Rasperrypi/onkyoricli''' 
 
-Then execute setup with (install git if it isn't)
+If it fails, maybe you have to recompile it. See docs for onkyo ri raspberrypi for instructions. 
 
-```
-git clone https://github.com/ahaack/onkyo-rpi
-cd onkyo-rpi
-sudo python3 setup.py build
-sudo python3 setup.py install
-sudo pigpiod
-```
 
 To test if all works execute
 ```
-cd onkyo-rpi
-python3 main.py 0x20      # AND / OR
-pathon3 scan.py 
-``` 
+cd Onkyo-RI-Rasperrypi
+./onkyoricli -p <wiringPi port> -c 0x20
+The port number 
+
 
 If the cabe is connected, and you got a right code, you should see / hear some reacrion from your Hardware ;) 
 
