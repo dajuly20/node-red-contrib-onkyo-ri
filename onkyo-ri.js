@@ -59,26 +59,31 @@ module.exports = function (RED) {
           });
         });
 
-        RED.nodes.registerType("onkyo-ri", OnkyoRi, {
-          settings: {
-            path: {
-              value: "~/onkyo-rpi/onkyo-rpi/",
-              exportable: true,
-            },
-            gpioPin: {
-              value: "25",
-              exportable: true,
-            },
-            logging: {
-              // Console logging
-              console: {
-                level: "info",
-                metrics: false,
-                audit: false,
-              },
-            },
-          },
-        });
+
+
+
       });
   }
+
+
+  RED.nodes.registerType("onkyo-ri", OnkyoRi, {
+	settings: {
+	  path: {
+		value: "~/onkyo-rpi/onkyo-rpi/",
+		exportable: true,
+	  },
+	  gpioPin: {
+		value: "25",
+		exportable: true,
+	  },
+	  logging: {
+		// Console logging
+		console: {
+		  level: "info",
+		  metrics: false,
+		  audit: false,
+		},
+	  },
+	},
+  }); 
 };
