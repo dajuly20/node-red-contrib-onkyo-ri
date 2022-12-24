@@ -20,5 +20,7 @@ module.exports = function(RED) {
             node.send(msg);
         });
     
-    RED.nodes.registerType("onkyo-ri-codes",OnkyoRiCodes);
-}}
+
+}
+RED.nodes.registerType("onkyo-ri-codes",OnkyoRiCodes);
+}
