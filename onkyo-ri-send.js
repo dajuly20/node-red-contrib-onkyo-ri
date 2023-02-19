@@ -1,5 +1,7 @@
 module.exports = function (RED) {
-  function OnkyoRi(config) {
+  function OnkyoRiSend(config) {
+    
+    try {
     const { exec } = require("child_process");
 
     const fs = require("fs");
@@ -7,7 +9,7 @@ module.exports = function (RED) {
 
     const basename = path.basename(__filename);
     const functions = {};
-
+    
     fs.readdirSync("./devices/")
       .filter(
         (file) =>
@@ -23,7 +25,7 @@ module.exports = function (RED) {
         var node = this;
         node.on("input", function (msg) {
           //RED.settings.sampleNodeColour
-
+          
           const payload = msg.payload;
           const path = config.path;
           const nodeRedDir =
@@ -52,21 +54,24 @@ module.exports = function (RED) {
 
               return;
             }
-
-            node.warn(`stdout: ${stdout}`);
-
+        
             node.send(command + " ...aha:" + stdout);
           });
+
+       
         });
 
 
 
 
       });
+    } catch(e) {
+      node.error(`Errorrrrr!!!:}`, e);
+    }
   }
 
 
-  RED.nodes.registerType("onkyo-ri", OnkyoRi, {
+  RED.nodes.registerType("onkyo-ri-send", OnkyoRiSend, {
 	settings: {
 	  path: {
 		value: "~/onkyo-rpi/onkyo-rpi/",
@@ -86,4 +91,6 @@ module.exports = function (RED) {
 	  },
 	},
   }); 
+
+  
 };
