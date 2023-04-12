@@ -24,8 +24,9 @@
   "homepage": "https://github.com/dajuly20/node-red-contrib-onkyo-ri#readme",
   "node-red": {
     "nodes": {
-      "onkyo-ri": "onkyo-ri-send.js",
-      "onkyo-ri-codes": "onkyo-ri-codes.js"
+      "onkyo-ri-send": "onkyo-ri-send.js",
+      "onkyo-ri-codes": "onkyo-ri-codes.js",
+      "onkyo-ri-device": "onkyo-ri-device.js"
     }
   }
   

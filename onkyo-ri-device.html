@@ -1,0 +1,65 @@
+<script type="text/javascript">
+    RED.nodes.registerType('onkyo-ri-device', {
+        category: 'function',
+        color: '#a6bbcf',
+        inputs: 1,
+        outputs: 1,
+        defaults: {
+            name: { value: "" },
+            device: {value: "apple"}
+
+        },
+        icon: "file.png",
+        label: function () {
+            return this.name || "onkyo-ri-device";
+        },
+        oneditprepare: function() 
+        {
+
+            $.ajax({
+            type:'GET',
+            url:'http://maennipi.mrz.ip:1880/resources/node-red-contrib-onkyo-ri/index.json',
+            dataType: 'json',
+            success: function (data) {
+                node.warn("DATA is: "+data)
+                node.warn(typeof data);
+                var mySelect = $('#node-input-device');
+                $.each(data, function(val, text) {
+                    mySelect.append(
+                        $('<option></option>').val(val).html(text)
+                ); 
+            }); 
+            }
+            });
+
+
+            $("#node-input-device").typedInput({
+                types: [
+                    {
+                        value: "fruit",
+                        options: [
+                            
+                        ]
+                    }
+                ]
+            })
+        }
+       
+
+    });
+
+</script>
+
+<script type="text/html" data-template-name="onkyo-ri-device">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div>
+        <input type="text" id="node-input-device">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="onkyo-ri-device">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>

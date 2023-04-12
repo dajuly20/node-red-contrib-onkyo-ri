@@ -1,7 +1,6 @@
 module.exports = function (RED) {
   function OnkyoRiSend(config) {
-    
-    try {
+
     const { exec } = require("child_process");
 
     const fs = require("fs");
@@ -9,13 +8,15 @@ module.exports = function (RED) {
 
     const basename = path.basename(__filename);
     const functions = {};
+   
+    const devices = fs.readdirSync("./devices/");
     
-    fs.readdirSync("./devices/")
+    devices
       .filter(
         (file) =>
           file.indexOf(".") !== 0 &&
           file !== basename &&
-          file.slice(-6) === ".jason"
+          file.slice(-6) === ".json"
       )
       .map((file) => {
         functions[file.slice(0, -6)] = require(path.join(__dirname, file));
@@ -23,9 +24,12 @@ module.exports = function (RED) {
         module.exports = functions;
         RED.nodes.createNode(this, config);
         var node = this;
+       
         node.on("input", function (msg) {
           //RED.settings.sampleNodeColour
-          
+          node.warn(basename)
+          node.warn(devices);
+         
           const payload = msg.payload;
           const path = config.path;
           const nodeRedDir =
@@ -33,7 +37,6 @@ module.exports = function (RED) {
             process.env.NODE_RED_HOME ||
             path.resolve(".");
           const completePath = `${nodeRedDir}/node_modules/node-red-contrib-onkyo-ri/Onkyo-RI-Rasperrypi/onkyoricli -p ${config.gpio} -c ${payload}`;
-          console.log;
 
           node.warn("Dir: " + nodeRedDir);
           node.warn(`Selected GPIO Pin: ${config.gpio}`);
@@ -65,9 +68,7 @@ module.exports = function (RED) {
 
 
       });
-    } catch(e) {
-      node.error(`Errorrrrr!!!:}`, e);
-    }
+
   }
 
 
