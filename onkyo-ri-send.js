@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 module.exports = function (RED) {
   function OnkyoRiSend(config) {
 
@@ -5,14 +7,15 @@ module.exports = function (RED) {
 
     const fs = require("fs");
     const path = require("path");
+    
+    //const fetch = require( 'node-fetch');
+
 
     const basename = path.basename(__filename);
     const functions = {};
    
-    const devices = s.readdirSync("./resources/");
+    // Shoould be: http://localhost:1880/resources/node-red-node-example/image.png
     
-    node.error(devices);
-    node.error("Halloooo");
     // devices
     //   .filter(
     //     (file) =>
@@ -36,6 +39,38 @@ module.exports = function (RED) {
 
       var node = this;
       node.on("input", function (msg) {
+
+        var url = "http://localhost:1880/resources/node-red-contrib-onkyo-ri/"+msg.topic+".json";
+        node.warn("URL is: "+ url)
+
+
+        const importDynamic = new Function('modulePath', 'return import(modulePath)');
+        // eslint-disable-next-line no-new-func
+        const fetch = async (...args:any[]) => {
+          const module = await importDynamic('node-fetch');
+          return module.default(...args);
+        };
+
+        // TODO: Fetch funtzt noch nicht :-(   ABR! ich hab jetzt KAi bock mehr 
+
+        const response = await fetch(url);
+        const data = await response.json();
+        
+
+        request.get(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var csv = JSON.parse(body);
+            node.warn(csv);
+            // Continue with your processing here.
+        }
+});
+        //var file = JSON.parse(fs.readFileSync(url, "utf8"));
+        //const devices = fs.readdirSync("./resources/");
+        
+        node.warn(file);
+        node.warn("Halloooo");
+        
+
         //RED.settings.sampleNodeColour
         node.error("HILFEEEE");
         node.warn(basename)
@@ -60,11 +95,11 @@ module.exports = function (RED) {
         node.warn("HERE WE R" + command);
         exec(completePath, (error, stdout, stderr) => {
           if (error) {
-            node.warn(`error: ${error.message}`);
+            node.error(`error: ${error.message}`);
             return;
           }
           if (stderr) {
-            node.warn(`stderr: ${stderr}`);
+            node.error(`stderr: ${stderr}`);
 
             return;
           }
