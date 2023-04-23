@@ -6,7 +6,7 @@
         outputs: 1,
         defaults: {
             name: { value: "" },
-            device: {value: "apple"}
+            codes: {value: -1}
 
         },
         icon: "file.png",
@@ -14,14 +14,37 @@
             return this.name || "onkyo-ri-codes";
         },
         oneditprepare: function() {
-            $("#node-input-device").typedInput({
+            $("#node-input-codes").typedInput({
                 types: [
                     {
-                        value: "fruit",
+                        value: "Onkyo Command",
                         options: [
-                            { value: "apple", label: "Apple" },
-                            { value: "banana", label: "Banana" },
-                            { value: "cherry", label: "Cherry" },
+                            { value: 0, label: "Input CD" },
+                            { value: 1, label: "Turn On + CD" },
+                            { value: 2, label: "Input TAPE" },
+                            { value: 3, label: "Turn On + TAPE" },
+                            { value: 4, label: "Input DVD" },
+                            { value: 5, label: "Turn On + DVD"},
+                            { value: 6, label: "Input BD/DVD" },
+                            { value: 7, label: "Turn On + BD/DVD" },
+                            { value: 8, label: "Input DOCK" },
+                            { value: 9, label: "Turn On + DOCK" },
+                            { value: 10, label: "Input Tuner" },
+                            { value: 11, label: "Dimmer Hi" },
+                            { value: 12, label: "Dimmer Mid" },
+                            { value: 13, label: "Dimmer Lo" },
+                            { value: 14, label: "Dimmer Hi" },
+                            { value: 15, label: "Dimmer Low" },
+                            { value: 16, label: "Turn Off" },
+                            { value: 17, label: "Test Mode" },
+                            { value: 18, label: "Radio search next" },
+                            { value: 19, label: "Radio search previous" },
+                            { value: 20, label: "Radio Stereo/Mono" },
+                            { value: 21, label: "Radio station next" },
+                            { value: 22, label: "Radio station previous"},
+                            { value: 23, label: "Volume Up"},
+                            { value: 24, label: "Volume Down"},
+                            { value: 25, label: "Mute"},
                         ]
                     }
                 ]
@@ -36,10 +59,10 @@
 <script type="text/html" data-template-name="onkyo-ri-codes">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
+        <input type="number" id="node-input-name" placeholder="Name">
     </div>
     <div>
-        <input type="text" id="node-input-device">
+        <input type="text" id="node-input-codes">
     </div>
 </script>
 

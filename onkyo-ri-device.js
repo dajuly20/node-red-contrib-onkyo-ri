@@ -1,24 +1,23 @@
 module.exports = function(RED) {
     function OnkyoRiDevice(config) {
 
-        const { exec } = require("child_process");
-        const fs = require("fs");
-        const path = require("path");
-        const basename = path.basename(__filename);
-        const functions = {};
-        const devices = fs.readdirSync("./resources/");
+        
+        //const devices = fs.readdirSync("./resources/");
         
      
-        const devNames = devices.map( device => device.substr(0, device.lastIndexOf(".")))
+        // const devNames = devices.map( device => device.substr(0, device.lastIndexOf(".")))
 
 
         RED.nodes.createNode(this,config);
         var node = this;
 
-        const select= $("#node-input-device");
+        
+        
         node.on('input', function(msg) {
-            
-            msg.payload = config.device;
+            //const select= $("#node-input-device");    
+            //node.error("HalloIchBinFehler... "+select);
+            msg.topic = config.device ?? "-1";
+            msg.payload = "HALLOOOOOO!!!!";
             node.send(msg);
         });
     }

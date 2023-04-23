@@ -3,8 +3,9 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         var node = this;
         node.on('input', function(msg) {
-            
-            msg.payload = config.device;
+
+            node.warn(config.codes);
+            msg.payload = config.codes;
             node.send(msg);
         });
     }
