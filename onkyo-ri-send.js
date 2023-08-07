@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import fetch from 'cross-fetch';
 
 module.exports = function (RED) {
   function OnkyoRiSend(config) {
@@ -43,18 +43,34 @@ module.exports = function (RED) {
         var url = "http://localhost:1880/resources/node-red-contrib-onkyo-ri/"+msg.topic+".json";
         node.warn("URL is: "+ url)
 
+        const receiver = fetch(url)
+        .then(res => {
+          if (res.status >= 400) {
+            throw new Error("Bad response from server");
+          }
+          return res.json();
+        })
+        .then(user => {
+          console.log(user);
+        })
+        .catch(err => {
+          console.error(err);
+        });
 
-        const importDynamic = new Function('modulePath', 'return import(modulePath)');
-        // eslint-disable-next-line no-new-func
-        const fetch = async (...args:any[]) => {
-          const module = await importDynamic('node-fetch');
-          return module.default(...args);
-        };
+        // const importDynamic = new Function('modulePath', 'return import(modulePath)');
+        // // eslint-disable-next-line no-new-func
+        // const fetch = async (args) => {
+        //   const module = await importDynamic('node-fetch');
+        //   return module.default(...args);
+        // };
 
         // TODO: Fetch funtzt noch nicht :-(   ABR! ich hab jetzt KAi bock mehr 
 
-        const response = await fetch(url);
-        const data = await response.json();
+        // const response = await fetch(url);
+        // const data = await response.json();
+
+        node.error("This is the one!");
+        node.error(reveiver)
         
 
         request.get(url, function (error, response, body) {
