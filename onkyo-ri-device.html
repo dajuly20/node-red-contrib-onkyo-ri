@@ -1,0 +1,74 @@
+<script type="text/javascript">
+    RED.nodes.registerType('onkyo-ri-device', {
+        category: 'function',
+        color: '#a6bbcf',
+        inputs: 1,
+        outputs: 1,
+        defaults: {
+            name: { value: "" },
+            device: {value: "apple"}
+
+        },
+        icon: "file.png",
+        label: function () {
+            return this.name || "onkyo-ri-device";
+        },
+        oneditprepare: function() {
+
+
+            $("#node-input-device").typedInput({
+                types: [
+                    {
+                        value: "Receiver Model",
+                        options: [
+                            { value: "tx-8082", label: "TX-8082" },
+                            { value: "tx-sr-313", label: "TX-SR-313" },
+                            { value: "tx-sr-333", label: "TX-SR-333" },
+                            { value: "tx-sr-600", label: "TX-SR-600" },
+                            { value: "tx-sr-603", label: "TX-SR-603" },
+                            { value: "tx-sr-606", label: "TX-SR-606"}
+                        
+                        ]
+                    }
+                ]
+            })
+
+
+            // $.ajax({
+            // type:'GET',
+            // url:'http://maennipi.mrz.ip:1880/resources/node-red-contrib-onkyo-ri/index.json',
+            // dataType: 'json',
+            // success: function (data) {
+            //     node.warn("DATA is: "+data)
+            //     node.warn(typeof data);
+            //     var mySelect = $('#node-input-device');
+            //     $.each(data, function(val, text) {
+            //         mySelect.append(
+            //             $('<option></option>').val(val).html(text)
+            //     ); 
+            // }); 
+            // }
+            // });
+
+
+        
+        }
+       
+
+    });
+
+</script>
+
+<script type="text/html" data-template-name="onkyo-ri-device">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div>
+        <input type="text" id="node-input-device">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="onkyo-ri-device">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>

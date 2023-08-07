@@ -1,31 +1,71 @@
 <script type="text/javascript">
-    RED.nodes.registerType('onkyo-ri-codes',{
+    RED.nodes.registerType('onkyo-ri-codes', {
         category: 'function',
         color: '#a6bbcf',
-        inputs:1,
-        outputs:1,
+        inputs: 1,
+        outputs: 1,
+        defaults: {
+            name: { value: "" },
+            codes: {value: -1}
+
+        },
         icon: "file.png",
-        label: function() {
+        label: function () {
             return this.name || "onkyo-ri-codes";
+        },
+        oneditprepare: function() {
+            $("#node-input-codes").typedInput({
+                types: [
+                    {
+                        value: "Onkyo Command",
+                        options: [
+                            { value: 0, label: "Input CD" },
+                            { value: 1, label: "Turn On + CD" },
+                            { value: 2, label: "Input TAPE" },
+                            { value: 3, label: "Turn On + TAPE" },
+                            { value: 4, label: "Input DVD" },
+                            { value: 5, label: "Turn On + DVD"},
+                            { value: 6, label: "Input BD/DVD" },
+                            { value: 7, label: "Turn On + BD/DVD" },
+                            { value: 8, label: "Input DOCK" },
+                            { value: 9, label: "Turn On + DOCK" },
+                            { value: 10, label: "Input Tuner" },
+                            { value: 11, label: "Dimmer Hi" },
+                            { value: 12, label: "Dimmer Mid" },
+                            { value: 13, label: "Dimmer Lo" },
+                            { value: 14, label: "Dimmer Hi" },
+                            { value: 15, label: "Dimmer Low" },
+                            { value: 16, label: "Turn Off" },
+                            { value: 17, label: "Test Mode" },
+                            { value: 18, label: "Radio search next" },
+                            { value: 19, label: "Radio search previous" },
+                            { value: 20, label: "Radio Stereo/Mono" },
+                            { value: 21, label: "Radio station next" },
+                            { value: 22, label: "Radio station previous"},
+                            { value: 23, label: "Volume Up"},
+                            { value: 24, label: "Volume Down"},
+                            { value: 25, label: "Mute"},
+                        ]
+                    }
+                ]
+            })
         }
+       
+
     });
+
 </script>
 
 <script type="text/html" data-template-name="onkyo-ri-codes">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
+        <input type="number" id="node-input-name" placeholder="Name">
     </div>
-    <div class="form-row">
-        <label for="node-config-input-path"><i class="fa fa-bookmark"></i> Path</label>
-        <input type="text" id="node-config-input-path">
+    <div>
+        <input type="text" id="node-input-codes">
     </div>
 </script>
 
-
 <script type="text/html" data-help-name="onkyo-ri-codes">
-    <h1><a href="https://github.com/"ahaack/onkyo-rpi">ahaack/onkyo-rpi</a> is required for this node to work!</h1>
-        <h3>Installation instructions availible on <a href="https://github.com/dajuly20/node-red-contrib-onkyo-ri">dajuly20/node-red-contrib-onkyo-ri</a> or on the original project's git.</h3>
-    
-    <p>Node will send the chosen code as msg.payload and leave the rest of the msg as is. If you don't find your hardware here, you'll have to pass msg.payload with the code for your hardware yourself. See the github page for how. (see link above)</p>
-     </script>
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>

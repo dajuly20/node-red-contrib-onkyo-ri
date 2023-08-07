@@ -5,8 +5,7 @@
   "main": "onkyo-ri.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "preinstall": "if cd Onkyo-RI-Rasperrypi; then git pull; else git clone https://github.com/dajuly20/Onkyo-RI-Rasperrypi Onkyo-RI-Rasperrypi;fi",
-    "install": "./Onkyo-RI-Rasperrypi/build && echo 'build success'"
+    "postinstall": "if cd Onkyo-RI-Rasperrypi; then git pull; else git clone https://github.com/dajuly20/Onkyo-RI-Rasperrypi.git Onkyo-RI-Rasperrypi;fi"
   },
   "repository": {
     "type": "git",
@@ -25,7 +24,9 @@
   "homepage": "https://github.com/dajuly20/node-red-contrib-onkyo-ri#readme",
   "node-red": {
     "nodes": {
-      "onkyo-ri": "onkyo-ri.js"
+      "onkyo-ri-send": "onkyo-ri-send.js",
+      "onkyo-ri-codes": "onkyo-ri-codes.js",
+      "onkyo-ri-device": "onkyo-ri-device.js"
     }
   }
   
