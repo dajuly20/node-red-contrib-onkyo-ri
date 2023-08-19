@@ -1,7 +1,7 @@
 # Objective 
 Control Onkyo Hardware with RI Jack with NodeRed & Rasperry Pi
 # TLDR
-U need to **bulild a cable** youslelf with a **3.5mm mono jack**, that has a **10kOhms resistor** in parallell, and connect the other end to a Rasperry Pi's GPIOS
+You need to **bulild a cable** youslelf with a **3.5mm mono jack**, that has a **10kOhms resistor** in parallell, and connect the other end to a Rasperry Pi's GPIOS (There's a klicki bunti Guide for that)
 
 # Getting started
 **node-red-contrib-onkyo-ri** wrapps [dajuly0x23/onkyo-rpi](https://github.com/dajuly20/Onkyo-RI-Rasperrypi) 
@@ -17,6 +17,8 @@ Please consider adding your device to the list here then. Pull request welcome!
 Creating a C++ implementation and adding a NodeRed wrapper for it is planned for the near future. 
 
 # Installation
+This Repository includes a executable compiled for **Rasperry Pi 4 on a 32 Bit Raspian** intallation.... which shouuuuuld run just fine on "any" pi. If it doesn't run or when you are running 64 Bit you could consider running ``rm onkyoricli && ./build `` to recompile. Even though I daubt that there would be any benefits by going to 64 Bit. (If you think there are benefits - let me know ;-) 
+
 The dependency comes pre compiled and should just run fine out of the box. 
 Test by executing. ```./Onkyo-RI-Rasperrypi/onkyoricli```
 
@@ -77,3 +79,6 @@ NOTE: As per my personal experience: For me testing went thought a testing mode,
 ## Feel free to Contribute 
 If it's just Ri Codes for your Hardware by sending a merge request or write me an email. 
 if you fork the whole thing and make it your own project. Please share your findings! Before you fork though, you can send me a message - I 've seen it often enough to have the same project in 100 different forks / versions on npm / Node Red. Think of DAUs. They won't know which version to install.  
+
+## Known Issues 
+* WiringPi is kind of outdated... sould go to other lib asap
