@@ -49,9 +49,11 @@ If the cabe is connected, and you got a right code, you should see / hear some r
 To connect to the RI port a 3.5mm mono jack is used. Tip is for data signal and sleeve is ground (GND). In case of stereo jack, connect tip to DATA, sleeve **and** ring to GND. That means for a Rasperry Pi 3 to put the tip to Pin 22 (GPIO_GEN6) GPIO25 (tx) (which is set as Standart for this node) and the shield to Pin 20 or another ground (Gnd). Please note, the pins can't be connected to UART ( Pin 8 / 9 ). (I didn't try it, so correct me if im worng).
 If you want to use another GPIO, you can specify that later in node red. The connection schema shown below is for a Rasperry Pi 3. 
 Output of ```gpio readall``` (make sure wiring pi is installed for that)
+
+## Use ⚠️WiringPi⚠️ (wPi) pin numbers  !!!
 ```
  +-----+-----+---------+------+---+---Pi 3B+-+---+------+---------+-----+-----+
- | BCM | wPi |   Name  | Mode | V | Physical | V | Mode | Name    | wPi | BCM |
+ | BCM | wPi |   Name  | Mode | V | Physical | V | Mode | Name    | wPi⚠ | BCM |
  +-----+-----+---------+------+---+----++----+---+------+---------+-----+-----+
  |     |     |    3.3v |      |   |  1 || 2  |   |      | 5v      |     |     |
  |   2 |   8 |   SDA.1 |   IN | 1 |  3 || 4  |   |      | 5v      |     |     |
