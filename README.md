@@ -3,7 +3,7 @@ Control Onkyo Hardware with RI Jack with NodeRed & Rasperry Pi
 # TLDR
 * You need to **make yourself a cable** with a **3.5mm Mono jack**, that has a **10kOhms resistor** in parallell.
 * Then connect the other end to a Rasperry Pi's GPIOS (There's a klicki bunti Guide for that)
-* Executing ./onkyoricli  (e.g. ``./onkyoricli -p 24 -c 0x20,0x20,0x20``) sends commands to your **Onkyo** Hardware (multiple commands are seperated by commas)
+* Executing ./onkyoricli  (e.g. ``./Onkyo-RI-Rasperrypi/onkyoricli -p 24 -c 0x20,0x20,0x20``) sends commands to your **Onkyo** Hardware (multiple commands are seperated by commas)
 * **Please note** Onkyo specific pitfall => can only control volume when soiurce on DOCK / GAM input.
 * There is not yet a return channel to receive commands sent on the bus - seemingly some HW **do** send something - didn't yet have a oszi, would be cool featrue though!
  
