@@ -9,7 +9,7 @@ U need to **bulild a cable** yourself with a **3.5mm mono jack**, that has a **1
 * You need to **make yourself a cable** with a **3.5mm Mono jack**, that has a **10kOhms resistor** in parallel.
 * Then connect the other end to a Rasperry Pi's GPIOS (There's a klicki bunti Guide for that)
 * Executing ./onkyoricli  (e.g. ``./Onkyo-RI-Rasperrypi/onkyoricli -p 24 -c 0x20,0x20,0x20``) sends commands to your **Onkyo** Hardware (multiple commands are separated by commas)
-* This Repo is a Node-Red wrapper for [dajuly0x23/onkyo-rpi](https://github.com/dajuly20/Onkyo-RI-Rasperrypi) written in C++ which by itself is code ported from Adruino to run on a Raspberry Pi - which is kind of the hardware layer that will execute the binary and put the electrons on the wire.
+* This Repo is a Node-Red wrapper for [dajuly0x23/onkyo-rpi](https://github.com/dajuly20/Onkyo-RI-Rasperrypi) written in C++ which by itself ported code [docbender/Onkyo-RI](https://github.com/docbender/Onkyo-RI) originally for the Adruino platform to run on a Raspberry Pi - which is kind of the hardware layer that will execute the binary and put the electrons on the wire.
 * **Please note** Onkyo specific pitfall => can only control volume when soiurce on DOCK / GAM input.
 * There is not yet a return channel to receive commands sent on the bus - seemingly some HW **do** send something - didn't yet have a oszi, would be cool feature though!
  
@@ -52,7 +52,7 @@ If you have another model then look for WiringPi pin numbers rasperry pi xxx.
 If the cabe is connected, and you got a right code, you should see / hear some reacrion from your Hardware now! 
 
 ## Connection
-To connect to the RI port a 3.5mm mono jack is used. Tip is for data signal and sleeve is ground (GND). In case of stereo jack, connect tip to DATA, sleeve **and** ring to GND. That means for a Rasperry Pi 3 to put the tip to Pin 22 (GPIO_GEN6) GPIO25 (tx) (which is set as Standart for this node) and the shield to Pin 20 or another ground (Gnd). Please note, the pins can't be connected to UART ( Pin 8 / 9 ). (I didn't try it, so correct me if im worng).
+To connect to the RI port a 3.5mm mono jack is used. Tip is for data signal and sleeve is ground (GND). In case of stereo jack, connect tip to DATA, sleeve **and** ring to GND. That means for a Rasperry Pi 3 to put the tip to Pin 22 (GPIO_GEN6) GPIO25 (tx) (which is set as standard for this node) and the shield to Pin 20 or another ground (Gnd). Please note, the pins can't be connected to UART ( Pin 8 / 9 ). (I didn't try it, so correct me if im worng).
 If you want to use another GPIO, you can specify that later in node red. The connection schema shown below is for a Rasperry Pi 3. 
 Output of ```gpio readall``` (make sure wiring pi is installed for that)
 
