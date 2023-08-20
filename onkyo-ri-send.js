@@ -1,5 +1,3 @@
-import fetch from 'cross-fetch';
-
 module.exports = function (RED) {
   function OnkyoRiSend(config) {
     try {
