@@ -1,46 +1,107 @@
 <script type="text/javascript">
-    RED.nodes.registerType('onkyo-ri-send',{
-        category: 'function',
-        color: '#a6bbcf',
-        defaults: {
-            gpio: {value:"6"},
-        },
-        inputs:1,
-        outputs:1,
-        icon: "file.png",
-        label: function() {
-            return this.name || "onkyo-ri-send";
-        }
-    });
+  RED.nodes.registerType("onkyo-ri-send", {
+    category: "function",
+    color: "#a6bbcf",
+    defaults: {
+      gpio: { value: "6" },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "file.png",
+    label: function () {
+      return this.name || "onkyo-ri-send";
+    },
+  });
 </script>
 
 <script type="text/html" data-template-name="onkyo-ri-send">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
-    </div>
-    <div class="form-row">
-        <label for="node-input-gpio"><i class="fa fa-bookmark"></i> GPIO (WiringPi)</label>
-        <input type="text" id="node-input-gpio">
-    </div>
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-gpio"
+      ><i class="fa fa-bookmark"></i> GPIO (WiringPi)</label
+    >
+    <input type="text" id="node-input-gpio" />
+  </div>
 </script>
 
-
 <script type="text/html" data-help-name="onkyo-ri-send">
-    
-    <p>Node will send it's <code>msg.payload</code> as commands over a <b>Onkyo-RI cable</b>. msg.payload could be <code>0x20</code> (for Onkyo TX SR 606 this switches the input source to CD ) 
-        Take a look at the projects GitHub <a href="https://github.com/dajuly20/node-red-contrib-onkyo-ri">dajuly20/node-red-contrib-onkyo-ri</a> for details about how to get the right cable, and what the right commands are for your Hardware.
-       
-        <h3>Outputs</h3>
-        <dl class="message-properties">
-            <dt>payload
-                <span class="property-type">string</span>
-            </dt>
-            <dd> The code that gets sent via Onkyo Ri, e.g.<code>0x20</code> but also multiple comma seperated values like <code>0x20,0x2F,0x20</code> this is why these have to be Strings. </dd>
-            <dt class="optional">topic <span class="property-type">numeric</span></dt>
-            <dd> (optional) Overrides the GPIO Pin defined in the node. <br />Numeric e.g. 24<br /> using <b>WiringPi Schema</b></dd>
-            <dd> To show the pinout on your device, type <code>gpio readall</code>><br>
-<pre style="min-width: 20rem;text-wrap:nowrap;overflow:hidden">
+  <p>
+    Node will send it's <code>msg.payload</code> as commands over a
+    <b>Onkyo-RI cable</b>. Take a look at the projects GitHub
+    <a href="https://github.com/dajuly20/node-red-contrib-onkyo-ri"
+      >dajuly20/node-red-contrib-onkyo-ri</a
+    >
+    for details about how to get the right cable, and what the right
+    <a
+      href="https://github.com/dajuly20/Onkyo-RI-Rasperrypi/blob/master/RiCodes.md"
+      >commands</a
+    >
+    for your Hardware are. Also you can (please) report
+    <a href="https://github.com/dajuly20/node-red-contrib-onkyo-ri/issues"
+      ><b>Bugs</b></a
+    >
+    or <b>live the open source mindset</b> create a
+    <a href="https://github.com/dajuly20/node-red-contrib-onkyo-ri/fork">
+      Fork</a
+    > fix the bug yourself and do good by contributing it back be creating a Pull-request<br />
+  </p>
+
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt class="optional">
+      topic <small>(optional)</small><span class="property-type">numeric</span>
+    </dt>
+    <dd>
+      Overrides the GPIO Pin defined in the node using <b>WiringPi Schema</b
+      ><br />What I use: <code>27</code> <br />
+    </dd>
+    <dt>
+      payload
+      <span class="property-type">string</span>
+    </dt>
+    <dd>
+      The code(s) that get sent via Onkyo Ri. A "complete" list can be found
+      here:
+      <a
+        href="https://github.com/dajuly20/Onkyo-RI-Rasperrypi/blob/master/RiCodes.md"
+        >RiCodes.md</a
+      >
+      <table style="outline-width:#888 solid thin">
+        <tbody>
+          <tr>
+            <th width="80px">Exapmple-value</th>
+            <th width="180px">What it does</th>
+          </tr>
+          <tr>
+            <td><center>0x20</center></td>
+            <td><center>Switch source to CD</center></td>
+          </tr>
+          <tr>
+            <td><center>0x1AE</center></td>
+            <td><center>Turn Off</center></td>
+          </tr>
+          <tr>
+            <td><center>0x1A0,0x1A2,0x1A2,0x1A2,0x120</center></td>
+            <td>
+              
+                <li>Switches to GAM</li>
+                <li>Volume increases by 3</li>
+                <li>Go "back" to DVD</li>
+              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      Example value: <code>0x20</code> (Source to CD on some Hardware)
+    </dd>
+
+    <dd>
+      To show the pinout on your device, type <code>gpio readall</code> into a terminal, or ask google ;-)<br />
+      <pre style="min-width: 20rem;text-wrap:nowrap;overflow:hidden">
 +-----+-----+---------+------+---+---Pi 3B+-+---+------+---------+-----+-----+
 | BCM | wPi |   Name  | Mode | V | Physical | V | Mode | Name    | <font color="red">wPi⚠</font> | BCM |
 +-----+-----+---------+------+---+----++----+---+------+---------+-----+-----+
@@ -68,19 +129,36 @@
 | BCM | wPi |   Name  | Mode | V | Physical | V | Mode | Name    | wPi | BCM |
 +-----+-----+---------+------+---+---Pi 3B+-+---+------+---------+-----+-----+
 </pre>
-            </dd>
-        </dl>
-    
-    
-    <h3>Details</h3>
-        <p><code>msg.payload</code> blabla
-    <h3>References</h3>
-        <ul>
-            <li><a href="https://github.com/dajuly20/Onkyo-RI-Rasperrypi#ri-codes">Ri Codes</a> - to be used as Payload property</li>
-	    <li><a href="https://github.com/dajuly20/Onkyo-RI-Rasperrypi#hardware-connection"> Hardware Connection / Pin Numbers </a>
-	    <li><a href="http://wiringpi.com">WiringPi</a> for Pin Numbers to use</li>
-            <li><a href="https://github.com/dajuly20/Onkyo-RI-Rasperrypi">dajuly20/Onkyo-RI-Rasperrypi</a>  C++ program based on aahak thats installed with this node</li>
-            <li><a href="https://github.com/dajuly20/node-red-contrib-onkyo-ri">dajuly20/node-red-contrib-onkyo-ri</a> This Projects git</li>
+    </dd>
+  </dl>
 
-        </ul>
- </script>
+  <h3>Some more to read:</h3>
+  <ul>
+    <li>
+      <a href="https://github.com/dajuly20/Onkyo-RI-Rasperrypi#ri-codes"
+        >Ri Codes</a
+      >
+      to be used as Payload property
+    </li>
+    <li>
+      <a
+        href="https://github.com/dajuly20/Onkyo-RI-Rasperrypi#hardware-connection"
+      >
+        Hardware Connection / Pin Numbers
+      </a>
+    </li>
+    <li><a href="http://wiringpi.com">WiringPi</a> Pin Numbers to plug in the cable</li>
+    <li>
+      <a href="https://github.com/dajuly20/Onkyo-RI-Rasperrypi"
+        >dajuly20/Onkyo-RI-Rasperrypi</a
+      >
+      C++ program that puts the digital value into electricity.
+    </li>
+    <li>
+      <a href="https://github.com/dajuly20/node-red-contrib-onkyo-ri"
+        >dajuly20/node-red-contrib-onkyo-ri</a
+      >
+      This projects GitHub page.
+    </li>
+  </ul>
+</script>
