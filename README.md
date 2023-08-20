@@ -7,16 +7,16 @@ U need to **bulild a cable** yourself with a **3.5mm mono jack**, that has a **1
 
 # TLDR
 * You need to **make yourself a cable** with a **3.5mm Mono jack**, that has a **10kOhms resistor** in parallel.
-* Then connect the other end to a Rasperry Pi's GPIOS (There's a klicki bunti Guide for that)
+* Then connect the other end to a Rasperry Pi's GPIOS (There's a klicki bunti guide for that)
 * Executing ./onkyoricli  (e.g. ``./Onkyo-RI-Rasperrypi/onkyoricli -p 24 -c 0x20,0x20,0x20``) sends commands to your **Onkyo** Hardware (multiple commands are separated by commas)
-* This Repo is a Node-Red wrapper for [dajuly0x23/onkyo-rpi](https://github.com/dajuly20/Onkyo-RI-Rasperrypi) written in C++ which by itself ported code [docbender/Onkyo-RI](https://github.com/docbender/Onkyo-RI) originally for the Adruino platform to run on a Raspberry Pi - which is kind of the hardware layer that will execute the binary and put the electrons on the wire.
-* **Please note** Onkyo specific pitfall => can only control volume when soiurce on DOCK / GAM input.
+* This Repo is a Node-Red wrapper for [dajuly0x23/onkyo-rpi](https://github.com/dajuly20/Onkyo-RI-Rasperrypi) written in C++ which by itself ported code [docbender/Onkyo-RI](https://github.com/docbender/Onkyo-RI) originally for the Arduino platform to run on a Raspberry Pi - which is kind of the hardware layer that will execute the binary and put the electrons on the wire.
+* **Please note** Onkyo specific pitfall => can only control volume when source on DOCK / GAM input.
 * There is not yet a return channel to receive commands sent on the bus - seemingly some HW **do** send something - didn't yet have a oszi, would be cool feature though!
  
 To buy:
 * [3.5 mm mono jack cord](https://www.amazon.de/s?k=3.5mm+mono+cable&__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2RIAFBLQBF739&sprefix=3.5mm+mono+cable%2Caps%2C123&ref=nb_sb_noss_2) cut off end, solder
 * [10k Ohm resisor](https://www.google.de/search?q=resistor+10kOhm). in parallel & connect to GPIO's of Pi. 3.5mm stereo should work too (short L + R then) - didn't thest that though.
-* solder [jump wires](https://www.google.de/search?q=rasperry+pi+jump+wires) to the end and connect to your Rasperry Pi's GPIOS (I have it on 
+* solder [jump wires](https://www.google.de/search?q=rasperry+pi+jump+wires) to the end and connect to your Rasperry Pi's GPIOS. <small>On my Rasperry Pi 4 I have the tip on GPIO.27 which is the third on the right when you look from the USB sockets, while the shield is on the neighboring 4th pin that happens to be GND</small>
 # Getting started
 **node-red-contrib-onkyo-ri** wrapps [dajuly0x23/onkyo-rpi](https://github.com/dajuly20/Onkyo-RI-Rasperrypi)
 (written in C++ using Wiring Pi) for Node-Red on a Rasperry Pi
