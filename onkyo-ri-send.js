@@ -22,7 +22,7 @@ module.exports = function (RED) {
         node.warn("Complete: " + completePath);
         const command = `pwd`;
         exec(completePath, (error, stdout, stderr) => {
-          node = this;
+          
           if (error) {
             node.warn(`error: ${error.message}`);
             return;
