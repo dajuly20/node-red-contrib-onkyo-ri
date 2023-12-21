@@ -8,6 +8,7 @@ module.exports = function (RED) {
       RED.nodes.createNode(this, config);
       var node = this;
       node.on("input", function (msg) {
+        const dbg = false;
         const node = this;
         const payload = msg.payload;
         const path = config.path;
@@ -17,9 +18,10 @@ module.exports = function (RED) {
           path.resolve(".");
         const completePath = `${nodeRedDir}/node_modules/node-red-contrib-onkyo-ri/Onkyo-RI-Rasperrypi/onkyoricli -p ${config.gpio} -c ${payload}`;
 
-        node.warn("Dir: " + nodeRedDir);
-        node.warn(`Selected GPIO Pin: ${config.gpio}`);
-        node.warn("Complete: " + completePath);
+        if(dbg) node.warn("Dir: " + nodeRedDir);
+        if(dbg) node.warn(`Selected GPIO Pin: ${config.gpio}`);
+        if(dbg) node.warn("Complete: " + completePath);
+
         const command = `pwd`;
         exec(completePath, (error, stdout, stderr) => {
           
@@ -33,7 +35,7 @@ module.exports = function (RED) {
             return;
           }
 
-          node.send(command + " ...aha:" + stdout);
+          node.send({cmd: command, payload: stdout, pin: config.gpio, path: completePath});
         });
       });
     } catch (e) {
