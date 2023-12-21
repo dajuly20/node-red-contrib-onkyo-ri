@@ -23,7 +23,7 @@
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
-    <div>
+    <div class="form-row">
         <label for="node-input-codes"><i class="fa fa-tag"></i> Command</label>
         <select type="number" id="node-input-codes">
             <option value="0x20"  >Input CD</option>
@@ -54,6 +54,7 @@
 <script type="text/html" data-help-name="onkyo-ri-codes">
     <p>This is a node that changes msg.payload to be a hexadecimal command like '0x12F' to turn on and switch to DVD.<br/> 
         More commands can be found here: <a href="https://github.com/dajuly20/node-red-contrib-onkyo-ri/blob/main/resources/RiCodes.md">RiCodes.md on GitHub</a><br />
-        Feel free to add nodes for your device - PRs welcome!
+        Feel free to add nodes for your device - PRs welcome!<br /><br />
+        <b>Please mind:</b>  Some functions like <b>volume control</b> and <b>switching off</b> are only possible, when changing to GAM/TV before!
     </p>
 </script>
