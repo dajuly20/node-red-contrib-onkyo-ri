@@ -91,7 +91,7 @@ Output of ```gpio readall``` (make sure wiring pi is installed for that)
 
 
 ## RI codes.
-### [RI Codes on seperate page](./devices/RiCodes.md)
+### [RI Codes on seperate page](./resources/RiCodes.md)
 ##
 
 ## Further reading 
