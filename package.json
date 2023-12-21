@@ -25,8 +25,7 @@
   "node-red": {
     "nodes": {
       "onkyo-ri-send": "onkyo-ri-send.js",
-      "onkyo-ri-codes": "onkyo-ri-codes.js",
-      "onkyo-ri-device": "onkyo-ri-device.js"
+      "onkyo-ri-codes": "onkyo-ri-codes.js"
     }
   }
   

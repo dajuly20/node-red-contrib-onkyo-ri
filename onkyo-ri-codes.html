@@ -1,6 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('onkyo-ri-codes', {
         category: 'function',
+        paletteLabel: "Device TX-SR-605",
         color: '#a6bbcf',
         inputs: 1,
         outputs: 1,
@@ -9,49 +10,10 @@
             codes: {value: -1}
 
         },
-        icon: "file.png",
+        icon: "onkyo.png",
         label: function () {
             return this.name || "onkyo-ri-codes";
         },
-        oneditprepare: function() {
-            $("#node-input-codes").typedInput({
-                types: [
-                    {
-                        value: "Onkyo Command",
-                        options: [
-                            { value: 0, label: "Input CD" },
-                            { value: 1, label: "Turn On + CD" },
-                            { value: 2, label: "Input TAPE" },
-                            { value: 3, label: "Turn On + TAPE" },
-                            { value: 4, label: "Input DVD" },
-                            { value: 5, label: "Turn On + DVD"},
-                            { value: 6, label: "Input BD/DVD" },
-                            { value: 7, label: "Turn On + BD/DVD" },
-                            { value: 8, label: "Input DOCK" },
-                            { value: 9, label: "Turn On + DOCK" },
-                            { value: 10, label: "Input Tuner" },
-                            { value: 11, label: "Dimmer Hi" },
-                            { value: 12, label: "Dimmer Mid" },
-                            { value: 13, label: "Dimmer Lo" },
-                            { value: 14, label: "Dimmer Hi" },
-                            { value: 15, label: "Dimmer Low" },
-                            { value: 16, label: "Turn Off" },
-                            { value: 17, label: "Test Mode" },
-                            { value: 18, label: "Radio search next" },
-                            { value: 19, label: "Radio search previous" },
-                            { value: 20, label: "Radio Stereo/Mono" },
-                            { value: 21, label: "Radio station next" },
-                            { value: 22, label: "Radio station previous"},
-                            { value: 23, label: "Volume Up"},
-                            { value: 24, label: "Volume Down"},
-                            { value: 25, label: "Mute"},
-                        ]
-                    }
-                ]
-            })
-        }
-       
-
     });
 
 </script>
@@ -59,13 +21,39 @@
 <script type="text/html" data-template-name="onkyo-ri-codes">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="number" id="node-input-name" placeholder="Name">
+        <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div>
-        <input type="text" id="node-input-codes">
+        <label for="node-input-codes"><i class="fa fa-tag"></i> Command</label>
+        <select type="number" id="node-input-codes">
+            <option value="0x20"  >Input CD</option>
+            <option value="0x2F"  >Turn On + CD</option>
+            <option value="0x70"  >Input TAPE</option>
+            <option value="0x7F"  >Turn On + TAPE</option>
+            <option value="0x120" >Input DVD</option>
+            <option value="0x12F" >Turn On + DVD"</option>
+            <option value="0x170" >Input DOCK</option>
+            <option value="0x17F" >Turn On + DOCK</option>
+            <option value="0x423" >Input Tuner</option>
+            <option value="0x2B0" >Dimmer Hi</option>
+            <option value="0x2B1" >Dimmer Mid</option>
+            <option value="0x2B2" >Dimmer Lo</option>
+            <option value="0x1AE" >Turn Off</option>
+            <option value="0x430" >Radio search next</option>
+            <option value="0x431" >Radio search previous</option>
+            <option value="0x432" >Radio Stereo/Mono</option>
+            <option value="0x433" >Radio station next</option>
+            <option value="0x434" >Radio station previous</option>
+            <option value="0x1A2" >Volume Up</option>
+            <option value="0x1A3" >Volume Down</option>
+            <option value="0x1A4" >Mute</option>
+        </select>
     </div>
 </script>
 
 <script type="text/html" data-help-name="onkyo-ri-codes">
-    <p>A simple node that converts the message payloads into all lower-case characters</p>
+    <p>This is a node that changes msg.payload to be a hexadecimal command like '0x12F' to turn on and switch to DVD.<br/> 
+        More commands can be found here: <a href="https://github.com/dajuly20/node-red-contrib-onkyo-ri/blob/main/resources/RiCodes.md">RiCodes.md on GitHub</a><br />
+        Feel free to add nodes for your device - PRs welcome!
+    </p>
 </script>
